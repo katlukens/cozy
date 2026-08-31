@@ -6,6 +6,7 @@ function init_field(x,y)
       field[i][j]=new_square()
     end
   end
+  printh("field created")
   return field
 end
 

@@ -1,0 +1,3 @@
+[tasks.dev]
+run = "pico8 -run cozy1.p8"
+description = "Run cozy in PICO-8"
