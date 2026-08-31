@@ -15,7 +15,7 @@ function _update()
 end
 
 function _draw()
-  pad_x, pad_y=1,2
+  pad_x, pad_y=1,1
   cls()
   draw_field(pad_x, pad_y)
 end
