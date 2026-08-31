@@ -12,6 +12,7 @@ end
 
 function _update()
   default_wet_duration_s=3
+  update_field(default_wet_duration_s)
 end
 
 function _draw()

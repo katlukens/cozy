@@ -17,6 +17,7 @@ function new_square()
     else  
       square.spr_soil=2
     end
+    square.start_time=time()
     return square
 end
 
@@ -32,5 +33,13 @@ function draw_field(pad_x, pad_y)
   end
 end
 
-function update_field()
+function update_field(default_wet_duration_s)
+  for i=1, field_size_x do
+    for j=1, field_size_y do
+      local square=field[i][j]
+      if is_wet(square) and is_expired(square.start_time, default_wet_duration_s) then
+        square.spr_soil=1
+      end
+    end
+  end
 end

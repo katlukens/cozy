@@ -1,3 +1,8 @@
+[tools]
+watchexec = "latest"
+
 [tasks.dev]
-run = "pico8 -run cozy1.p8"
-description = "Run cozy in PICO-8"
+run = """
+watchexec --restart --exts lua,p8 -- pico8 -run cozy1.p8
+"""
+description = "Run cozy in PICO-8 with livereload"
