@@ -10,6 +10,10 @@ start_x=100
 start_y=100
 field_size_x=10
 field_size_y=6
+wet_duration_s=3
+pad_x=1 
+pad_y=1
+
 
 function _init()
   field=new_field(field_size_x, field_size_y)
@@ -17,13 +21,11 @@ function _init()
 end
 
 function _update()
-  default_wet_duration_s=3
-  update_field(default_wet_duration_s)
+  update_field(wet_duration_s)
   move_player(player)
 end
 
 function _draw()
-  pad_x, pad_y=1,1
   cls()
   draw_field(pad_x, pad_y)
   draw_player()

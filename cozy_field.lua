@@ -37,7 +37,7 @@ function update_field(default_wet_duration_s)
   for i=1, field_size_x do
     for j=1, field_size_y do
       local square=field[i][j]
-      if is_wet(square) and is_expired(square.start_time, default_wet_duration_s) then
+      if is_wet(square) and is_expired(square.start_time, wet_duration_s) then
         square.spr_soil=1
       end
     end
