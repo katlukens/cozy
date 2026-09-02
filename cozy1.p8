@@ -22,7 +22,7 @@ end
 
 function _update()
   update_field(wet_duration_s)
-  move_player(player)
+  move_player()
 end
 
 function _draw()

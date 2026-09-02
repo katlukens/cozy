@@ -6,7 +6,7 @@ function new_player(start_x, start_y)
   return player
 end
 
-function move_player(player)
+function move_player()
   if (btn(0)) player.x-=1
   if (btn(1)) player.x+=1
   if (btn(2)) player.y-=1
@@ -14,5 +14,5 @@ function move_player(player)
 end
 
 function draw_player()
-  spr(player.spr,player.x,player.y)
+  spr(player.spr,player.x,player.y,2,2,false,false)
 end
