@@ -21,18 +21,6 @@ function new_square()
     return square
 end
 
-function draw_field(pad_x, pad_y)
-  for i=1, field_size_x do
-    for j=1, field_size_y do
-      local square=field [i][j]
-      local sx=(i*(8+pad_x))
-      local sy=(j*(8+pad_y))
-      spr(square.spr_soil, sx, sy)
-      spr(square.spr_plant, sx, sy)
-    end
-  end
-end
-
 function update_field(default_wet_duration_s)
   for i=1, field_size_x do
     for j=1, field_size_y do
@@ -40,6 +28,33 @@ function update_field(default_wet_duration_s)
       if is_wet(square) and is_expired(square.start_time, wet_duration_s) then
         square.spr_soil=1
       end
+    end
+  end
+end
+
+function water_square()
+  for i=1, field_size_x do
+    for j=1, field_size_y do
+      local square=field[i][j]
+      local sx=i*(8+pad_x)
+      local sy=j*(8+pad_y)
+      local dist=max(abs(player.x-sx), abs(player.y-sy))
+      if dist<8 and fget(square.spr_soil, 0) and btn(5) then
+        square.spr_soil=2
+        square.start_time=time()
+      end
+    end
+  end
+end
+
+function draw_field(pad_x, pad_y)
+  for i=1, field_size_x do
+    for j=1, field_size_y do
+      local square=field[i][j]
+      local sx=(i*(8+pad_x))
+      local sy=(j*(8+pad_y))
+      spr(square.spr_soil, sx, sy)
+      spr(square.spr_plant, sx, sy)
     end
   end
 end

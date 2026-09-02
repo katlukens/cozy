@@ -11,6 +11,22 @@ function move_player()
   if (btn(1)) player.x+=1
   if (btn(2)) player.y-=1
   if (btn(3)) player.y+=1
+  force_on_screen()
+end
+
+function force_on_screen()
+  if (player.x<0) then
+    player.x=0
+  end
+  if (player.x>111) then
+    player.x=111
+  end
+  if (player.y<0) then
+    player.y=0
+  end
+  if (player.y>111) then
+    player.y=111
+  end
 end
 
 function draw_player()
