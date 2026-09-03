@@ -39,7 +39,7 @@ function water_square()
       local sx=i*(8+pad_x)
       local sy=j*(8+pad_y)
       local dist=max(abs(player.x-sx), abs(player.y-sy))
-      if dist<8 and fget(square.spr_soil, 0) and btn(5) then
+      if dist<8 and not is_wet(square) and btn(5) then
         square.spr_soil=2
         square.start_time=time()
       end

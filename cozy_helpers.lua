@@ -1,13 +1,8 @@
-function is_expired(start_time, default_wet_duration_s)
-  if (start_time+default_wet_duration_s)<time() then 
-    return true
-  else 
-    return false
-  end
+function is_expired(start_time, duration_s)
+  return (start_time+duration_s)<time()
 end
 
 function is_wet(square)
-  if square.spr_soil==2 then
-    return square.start_time
-  end
+  return square.spr_soil==2
 end
+
