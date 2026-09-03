@@ -3,12 +3,13 @@ function new_player(start_x, start_y)
   player.x=start_x
   player.y=start_y
   player.spr=8
+  -- player.dir="right"
   return player
 end
 
 function move_player()
-  if (btn(0)) player.x-=1
-  if (btn(1)) player.x+=1
+  if (btn(0)) player.x-=1 player.spr=8
+  if (btn(1)) player.x+=1 player.spr=10
   if (btn(2)) player.y-=1
   if (btn(3)) player.y+=1
   force_on_screen()
@@ -31,4 +32,6 @@ end
 
 function draw_player()
   spr(player.spr,player.x,player.y,2,2,false,false)
+  -- spr(player.spr_r,player.x,player.y,2,2,false,false)
+
 end
