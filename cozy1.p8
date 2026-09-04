@@ -22,11 +22,11 @@ function _init()
 end
 
 function _update()
-  update_field(wet_duration_s)
+  dry_field(wet_duration_s)
   move_player()
   water_squares()
   plant_squares()
-  -- grow_plant()
+  grow_plants()
   -- harvest_plant()
 end
 

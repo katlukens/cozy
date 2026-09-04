@@ -13,18 +13,3 @@ function log(fmt, ...)
   end
   printh(out)
 end
-
-function field_interacter(action, checker, doer)
-  for i = 1, field_size_x do
-    for j = 1, field_size_y do
-      local square = field[i][j]
-      local sx = i*(8+pad_x)
-      local sy = j*(8+pad_y)
-      local dist=max(abs(player.x-sx), abs(player.y-sy))
-      if dist<8 and checker(square) do
-        doer(square)
-        log("[%][%] %", i, j, action)
-      end
-    end
-  end
-end
