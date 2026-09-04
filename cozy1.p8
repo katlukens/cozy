@@ -24,7 +24,7 @@ function _update()
   update_field(wet_duration_s)
   move_player()
   water_squares()
-  plant_square()
+  plant_squares()
   -- grow_plant()
   -- harvest_plant()
 end

@@ -29,32 +29,15 @@ function update_field(wet_duration_s)
       if is_wet(square) and is_expired(square.start_time, wet_duration_s) then
         square.spr_soil=1
       end
+      if is_wet(square) and is_planted(square) and not is_mature(square) then
+        square.spr_plant = square.spr_plant + 1
+      end
     end
   end
 end
 
--- function water_square()
---   for i=1, field_size_x do
---     for j=1, field_size_y do
---       local square=field[i][j]
---       local sx=i*(8+pad_x)
---       local sy=j*(8+pad_y)
---       local dist=max(abs(player.x-sx), abs(player.y-sy))
---       if dist<8 and not is_wet(square) and btn(5) then
---         square.spr_soil=2
---         square.start_time=time()
---         log("[%][%] watered", i, j)
---       end
---     end
---   end
--- end
-
 is_being_watered = function(square)
-  if not is_wet(square) and btn(5) then
-    return true
-  else
-    return false
-  end
+  return not is_wet(square) and btn(5)
 end
 
 water_square = function(square)
@@ -66,19 +49,16 @@ function water_squares()
   field_interacter("watering", is_being_watered, water_square)
 end
 
-function plant_square()
-  for i=1, field_size_x do
-    for j=1, field_size_y do
-      local square=field[i][j]
-      local sx=i*(8+pad_x)
-      local sy=j*(8+pad_y)
-      local dist=max(abs(player.x-sx), abs(player.y-sy))
-      if dist<8 and is_empty(square) and btn(4) then
-        square.spr_plant=3
-        log("[%][%] planted", i, j)
-      end
-    end
-  end
+is_being_planted = function(square)
+  return is_empty(square) and btn(4)
+end
+
+plant_square = function(square)
+  square.spr_plant = 3
+end
+
+function plant_squares()
+  field_interacter("planting", is_being_planted, plant_square)
 end
 
 function grow_plant()
