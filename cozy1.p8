@@ -5,6 +5,7 @@ __lua__
 #include cozy_field.lua
 #include cozy_helpers.lua
 #include cozy_player.lua
+#include cozy_logic.lua
 
 start_x=64
 start_y=64

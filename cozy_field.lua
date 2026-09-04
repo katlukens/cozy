@@ -1,3 +1,4 @@
+--init
 function new_field(x,y)
   local field={}
   for i=1, x do
@@ -22,6 +23,7 @@ function new_square()
     return square
 end
 
+--update
 function update_field(wet_duration_s)
   for i=1, field_size_x do
     for j=1, field_size_y do
@@ -64,6 +66,7 @@ end
 function grow_plant()
 end
 
+--draw
 function draw_field(pad_x, pad_y)
   for i=1, field_size_x do
     for j=1, field_size_y do

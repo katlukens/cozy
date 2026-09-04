@@ -1,3 +1,4 @@
+--init
 function new_player(start_x, start_y)
   local player={}
   player.x=start_x
@@ -6,6 +7,7 @@ function new_player(start_x, start_y)
   return player
 end
 
+--update
 function move_player()
   if (btn(0)) player.x-=1 player.spr=8   -- left
   if (btn(1)) player.x+=1 player.spr=10  -- right
@@ -29,6 +31,7 @@ function force_on_screen()
   end
 end
 
+--draw
 function draw_player()
   spr(player.spr,player.x,player.y,2,2,false,false)
 end
