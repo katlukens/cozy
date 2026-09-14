@@ -5,14 +5,13 @@ __lua__
 #include cozy_field.lua
 #include cozy_helpers.lua
 #include cozy_player.lua
-#include cozy_logic.lua
 
 start_x = 64
 start_y = 64
 field_size_x = 10
 field_size_y = 6
-wet_duration_s = 3
-grow_duration_s = 4
+wet_duration_s = 5
+grow_duration_s = 6
 pad_x = 1 
 pad_y = 1
 
@@ -23,7 +22,8 @@ function _init()
 end
 
 function _update()
-  dry_field(wet_duration_s)
+  -- dry_field(wet_duration_s)
+  dry_square()
   move_player()
   water_squares()
   plant_squares()
