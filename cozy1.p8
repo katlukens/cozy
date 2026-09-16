@@ -5,6 +5,7 @@ __lua__
 #include cozy_field.lua
 #include cozy_helpers.lua
 #include cozy_player.lua
+#include cozy_chest.lua
 
 start_x = 64
 start_y = 64
@@ -17,8 +18,10 @@ pad_y = 1
 
 
 function _init()
-  field = new_field(field_size_x, field_size_y)
-  player = new_player(start_x, start_y)
+  game = {}
+  game.field = new_field(field_size_x, field_size_y)
+  game.player = new_player(start_x, start_y)
+  game.chest = new_chest()
 end
 
 function _update()
