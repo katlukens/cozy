@@ -1,4 +1,4 @@
---init
+--model
 
 
 function new_field(x,y)
@@ -34,10 +34,10 @@ end
 function field_interacter(action, checker, doer)
   for i = 1, field_size_x do
     for j = 1, field_size_y do
-      local square = game.field[i][j]
+      local square = model.field[i][j]
       local sx = i*(8+pad_x)
       local sy = j*(8+pad_y)
-      local dist = max(abs(game.player.x-sx), abs(game.player.y-sy))
+      local dist = max(abs(model.player.x-sx), abs(model.player.y-sy))
       if dist < 8 and 
         checker(square) do
         doer(square)
@@ -97,9 +97,9 @@ is_being_harvested = function(square)
 end
 
 harvest_square = function(square)
-  game.chest.turnips = game.chest.turnips + 1
+  model.chest.turnips = model.chest.turnips + 1
   square.spr_plant = 0
-  log("total turnips: %",  game.chest.turnips)
+  log("total turnips: %",  model.chest.turnips)
 end
 
 
@@ -110,7 +110,7 @@ end
 function dry_field()
   for i = 1, field_size_x do
     for j = 1, field_size_y do
-      local square = game.field[i][j]
+      local square = model.field[i][j]
       if is_wet(square) and
         square.dry_time < time() then
           square.spr_soil = 1
@@ -123,7 +123,7 @@ end
 function grow_plants()
   for i = 1, field_size_x do
     for j = 1, field_size_y do
-      local square = game.field[i][j]
+      local square = model.field[i][j]
       if should_grow(square) then
         square.spr_plant = square.spr_plant + 1
         square.last_grown = time()
@@ -151,7 +151,7 @@ end
 function draw_field(pad_x, pad_y)
   for i = 1, field_size_x do
     for j = 1, field_size_y do
-      local square = game.field[i][j]
+      local square = model.field[i][j]
       local sx = (i*(8+pad_x))
       local sy = (j*(8+pad_y))
       spr(square.spr_soil, sx, sy)

@@ -1,4 +1,4 @@
---init
+--model
 
 function new_chest()
   local chest = {}
@@ -14,5 +14,5 @@ end
 --draw
 
 function draw_turnip_count()
-  print("turnips: "..game.chest.turnips, 80, 111, 0)
+  print("turnips: "..model.chest.turnips, 80, 111, 0)
 end

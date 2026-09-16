@@ -18,10 +18,10 @@ pad_y = 1
 
 
 function _init()
-  game = {}
-  game.field = new_field(field_size_x, field_size_y)
-  game.player = new_player(start_x, start_y)
-  game.chest = new_chest()
+  model = {}
+  model.field = new_field(field_size_x, field_size_y)
+  model.player = new_player(start_x, start_y)
+  model.chest = new_chest()
 end
 
 function _update()
