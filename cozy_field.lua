@@ -1,5 +1,6 @@
 --init
 
+
 function new_field(x,y)
   local field={}
   for i=1, x do
@@ -21,9 +22,9 @@ function new_square()
       square.dry_time = time() + rnd(wet_duration_s)
     end
     square.spr_plant = 0
-    square.last_grown = time()
     return square
 end
+
 
 
 --business logic
@@ -91,10 +92,11 @@ plant_square = function(square)
 end
 
 
+
 --update
 
 
-function dry_square()
+function dry_field()
   for i=1, field_size_x do
     for j=1, field_size_y do
       local square=field[i][j]

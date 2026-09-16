@@ -22,8 +22,7 @@ function _init()
 end
 
 function _update()
-  -- dry_field(wet_duration_s)
-  dry_square()
+  dry_field()
   move_player()
   water_squares()
   plant_squares()
