@@ -91,6 +91,14 @@ plant_square = function(square)
   square.last_grown = time()
 end
 
+is_being_harvested = function(square)
+  return is_mature(square) and btn(4)
+end
+
+harvest_square = function(square)
+  square.spr_plant = 0
+end
+
 
 
 --update
@@ -127,6 +135,10 @@ end
 
 function plant_squares()
   field_interacter("planting", is_being_planted, plant_square)
+end
+
+function harvest_plants()
+  field_interacter ("harvesting", is_being_harvested, harvest_square)
 end
 
 

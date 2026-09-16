@@ -17,8 +17,8 @@ pad_y = 1
 
 
 function _init()
-  field=new_field(field_size_x, field_size_y)
-  player=new_player(start_x, start_y)
+  field = new_field(field_size_x, field_size_y)
+  player = new_player(start_x, start_y)
 end
 
 function _update()
@@ -27,7 +27,7 @@ function _update()
   water_squares()
   plant_squares()
   grow_plants()
-  -- harvest_plant()
+  harvest_plants()
 end
 
 function _draw()
