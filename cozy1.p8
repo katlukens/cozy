@@ -7,6 +7,12 @@ __lua__
 #include cozy_player.lua
 #include cozy_chest.lua
 
+left = 0
+right = 1
+up = 2
+down = 3
+btn_z = 4
+btn_x = 5
 start_x = 64
 start_y = 64
 field_size_x = 10
@@ -15,13 +21,24 @@ wet_duration_s = 5
 grow_duration_s = 6
 pad_x = 1 
 pad_y = 1
+spr_blank = 0
+spr_soil_dry = 1
+spr_soil_wet = 2
+spr_plant_seed = 3
+spr_plant_1 = 4
+spr_plant_2 = 5
+spr_plant_3 = 6
+spr_plant_mature = 7
+spr_player_left = 8
+spr_player_right = 10
+
 
 
 function _init()
   model = {}
   model.field = new_field(field_size_x, field_size_y)
   model.player = new_player(start_x, start_y)
-  model.chest = new_chest()
+  model.inventory = new_inventory()
 end
 
 function _update()

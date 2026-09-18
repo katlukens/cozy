@@ -16,12 +16,12 @@ end
 function new_square()
   local square={}
     if flr(rnd(2)) == 1 then
-      square.spr_soil = 1
+      square.spr_soil = spr_soil_dry
     else  
-      square.spr_soil = 2
+      square.spr_soil = spr_soil_wet
       square.dry_time = time() + rnd(wet_duration_s)
     end
-    square.spr_plant = 0
+    square.spr_plant = spr_blank
     return square
 end
 
@@ -52,19 +52,19 @@ function is_expired(timestamp, duration_s)
 end
 
 function is_wet(square)
-  return square.spr_soil == 2
+  return square.spr_soil == spr_soil_wet
 end
 
 function is_empty(square)
-  return square.spr_plant == 0
+  return square.spr_plant == spr_blank
 end
 
 function is_planted(square)
-  return (square.spr_plant > 2) and (square.spr_plant < 8)
+  return (square.spr_plant >= spr_plant_seed) and (square.spr_plant <= spr_plant_mature)
 end
 
 function is_mature(square)
-  return square.spr_plant == 7
+  return square.spr_plant == spr_plant_mature
 end
 
 function should_grow(square)
@@ -75,31 +75,31 @@ function should_grow(square)
 end
 
 is_being_watered = function(square)
-  return not is_wet(square) and btn(5)
+  return not is_wet(square) and btn(btn_x)
 end
 
 water_square = function(square)
-  square.spr_soil = 2
+  square.spr_soil = spr_soil_wet
   square.dry_time = time() + rnd(wet_duration_s)
 end
 
 is_being_planted = function(square)
-  return is_empty(square) and btn(4)
+  return is_empty(square) and btn(btn_z)
 end
 
 plant_square = function(square)
-  square.spr_plant = 3
+  square.spr_plant = spr_plant_seed
   square.last_grown = time()
 end
 
 is_being_harvested = function(square)
-  return is_mature(square) and btn(4)
+  return is_mature(square) and btn(btn_z)
 end
 
 harvest_square = function(square)
-  model.chest.turnips = model.chest.turnips + 1
-  square.spr_plant = 0
-  log("total turnips: %",  model.chest.turnips)
+  model.inventory.turnips = model.inventory.turnips + 1
+  square.spr_plant = spr_blank
+  log("total turnips: %",  model.inventory.turnips)
 end
 
 
@@ -113,7 +113,7 @@ function dry_field()
       local square = model.field[i][j]
       if is_wet(square) and
         square.dry_time < time() then
-          square.spr_soil = 1
+          square.spr_soil = spr_soil_dry
       end
     end
   end

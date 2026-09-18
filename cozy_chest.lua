@@ -1,9 +1,9 @@
 --model
 
-function new_chest()
-  local chest = {}
-   chest.turnips = 0
-   return chest
+function new_inventory()
+  local inventory = {}
+   inventory.turnips = 0
+   return inventory
 end
 
 
@@ -14,5 +14,5 @@ end
 --draw
 
 function draw_turnip_count()
-  print("turnips: "..model.chest.turnips, 80, 111, 0)
+  print("turnips: "..model.inventory.turnips, 80, 111, 0)
 end
