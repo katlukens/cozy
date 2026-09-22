@@ -38,5 +38,7 @@ end
 --draw
 
 function draw_player()
-  spr(model.player.spr,model.player.x,model.player.y,2,2,false,false)
+  spr(model.player.spr, model.player.x, model.player.y, 2, 2, false, false)
+  local tool = model.inventory.tools[model.inventory.selected]
+  spr(tool.spr, model.player.x, model.player.y, 1, 1)
 end

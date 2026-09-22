@@ -2,11 +2,11 @@
 
 
 function new_field(x,y)
-  local field={}
-  for i=1, x do
-    field[i]={}
-    for j=1, y do
-      field[i][j]=new_square()
+  local field = {}
+  for i = 1, x do
+    field[i] = {}
+    for j = 1, y do
+      field[i][j] = new_square()
     end
   end
   log("field created")
@@ -14,7 +14,7 @@ function new_field(x,y)
 end
 
 function new_square()
-  local square={}
+  local square = {}
     if flr(rnd(2)) == 1 then
       square.spr_soil = spr_soil_dry
     else  
@@ -75,7 +75,7 @@ function should_grow(square)
 end
 
 is_being_watered = function(square)
-  return not is_wet(square) and btn(btn_x)
+  return not is_wet(square)
 end
 
 water_square = function(square)
@@ -84,7 +84,7 @@ water_square = function(square)
 end
 
 is_being_planted = function(square)
-  return is_empty(square) and btn(btn_z)
+  return is_empty(square)
 end
 
 plant_square = function(square)
@@ -93,13 +93,13 @@ plant_square = function(square)
 end
 
 is_being_harvested = function(square)
-  return is_mature(square) and btn(btn_z)
+  return is_mature(square)
 end
 
 harvest_square = function(square)
-  model.inventory.turnips = model.inventory.turnips + 1
+  model.inventory.crops.turnips = model.inventory.crops.turnips + 1
   square.spr_plant = spr_blank
-  log("total turnips: %",  model.inventory.turnips)
+  log("total turnips: %",  model.inventory.crops.turnips)
 end
 
 
@@ -148,12 +148,12 @@ end
 
 --draw
 
-function draw_field(pad_x, pad_y)
+function draw_field(x, y)
   for i = 1, field_size_x do
     for j = 1, field_size_y do
       local square = model.field[i][j]
-      local sx = (i*(8+pad_x))
-      local sy = (j*(8+pad_y))
+      local sx = (i * (8 + x))
+      local sy = (j * (8 + y))
       spr(square.spr_soil, sx, sy)
       spr(square.spr_plant, sx, sy)
     end
