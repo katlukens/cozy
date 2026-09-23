@@ -8,27 +8,31 @@ function new_inventory()
    }
    inventory.tools = {
     {
-      name    = "water", 
+      action    = "water", 
       checker = is_being_watered, 
       doer    = water_square,
       spr     = spr_watering_can,
     },
     {
-      name    = "plant",
+      action    = "plant",
       checker = is_being_planted, 
       doer    = plant_square,
       spr     = spr_seed_bag,
     },
     {
-      name    = "harvest",
+      action    = "harvest",
       checker = is_being_harvested,
       doer    = harvest_square,
       spr     = spr_sickle,
     },
-   }
-   inventory.selected = 1
-   return inventory
+  }
+  inventory.selected = 1
+  return inventory
 end
+
+
+
+--update
 
 function select_tool()
   if btnp(btn_z) then
@@ -39,12 +43,10 @@ end
 function use_tool()
   if btn(btn_x) then
     local tool = model.inventory.tools[model.inventory.selected]
-    field_interacter(tool.name, tool.checker, tool.doer)
+    field_interacter(tool.action, tool.checker, tool.doer)
   end
 end
 
-
---update
 
 
 

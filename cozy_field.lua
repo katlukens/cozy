@@ -132,18 +132,6 @@ function grow_plants()
   end
 end
 
-function water_squares()
-  field_interacter("watering", is_being_watered, water_square)
-end
-
-function plant_squares()
-  field_interacter("planting", is_being_planted, plant_square)
-end
-
-function harvest_plants()
-  field_interacter ("harvesting", is_being_harvested, harvest_square)
-end
-
 
 
 --draw
