@@ -30,7 +30,6 @@ spr_plant_2 = 5
 spr_plant_3 = 6
 spr_plant_mature = 7
 spr_player = 8
--- spr_player_right = 10
 spr_watering_can = 17
 spr_seed_bag = 18
 spr_sickle = 19
